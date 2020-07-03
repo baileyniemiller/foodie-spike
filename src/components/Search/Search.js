@@ -15,6 +15,7 @@ class Search extends Component {
     })
       .then((response) => {
         this.setState({
+          searchText: "",
           restaurant: {
             name: response.data.name,
             address: response.data.formatted_address,
