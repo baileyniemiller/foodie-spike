@@ -1,8 +1,9 @@
 const express = require("express");
+require("dotenv").config();
 const app = express();
 const bodyParser = require("body-parser");
 const restaurants = require("./routes/restaurant.router.js");
-const PORT = process.env.PORT || 5000;
+
 
 /** ---------- MIDDLEWARE ---------- **/
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,6 +12,10 @@ app.use(express.static("build"));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 app.use("/restaurants", restaurants);
+
+
+// App set
+const PORT = process.env.PORT || 5000;
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
