@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config();
 
-router.get(`/`, (req, res) => {
+router.get(`/:input`, (req, res) => {
   axios
     .get(
-      `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${process.env.REACT_APP_GOOGLE_KEY}&query=restaurants-in-fargo`
+      `https://maps.googleapis.com/maps/api/place/textsearch/json?key=${process.env.REACT_APP_GOOGLE_KEY}&query=${req.params.input}`
     )
     .then((response) => {
       res.send(response.data);
